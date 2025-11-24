@@ -6,6 +6,13 @@ btnLogin.addEventListener('click', (e)=>{
     let email = document.getElementById('email').value
     let senha = document.getElementById('senha').value
 
+    if (!email || !senha) {
+        res.innerHTML = `Preencha todos os campos!`
+        res.style.color = 'red'
+        res.style.textAlign = 'center'
+        return
+    }
+
     const dados = {
         email: email,
         senha: senha
@@ -22,8 +29,39 @@ btnLogin.addEventListener('click', (e)=>{
     .then(dados => {
         alert('Login realizado com sucesso!')
 
-        localStorage.setItem('statusLog', true)
-        localStorage.setItem('nome', dados.nome)
+        console.log(dados)
+            console.log('nome', dados.usuario.nome)
+            console.log('tipo', dados.usuario.tipo)
+
+            if (!dados.token) {
+                res.innerHTML = dados.message || 'Erro ao fazer login!'
+                res.style.color = 'red'
+                res.style.textAlign = 'center'
+                return
+            }
+
+            // Salvar token 
+            sessionStorage.setItem('token', dados.token)
+            // Salvar nome
+            sessionStorage.setItem('nome', dados.usuario.nome)
+            sessionStorage.setItem('tipo', dados.usuario.tipo)
+
+            // res.innerHTML = `<br>`
+            // res.innerHTML += `<hr>`
+            // res.innerHTML += `<br>`
+            // res.innerHTML += `Login realizado com sucesso!`
+            // res.style.color = 'white'
+            // res.style.textAlign = 'center'
+            // res.style.fontWeight = 'bold'
+
+            // setTimeout(() => {
+            //     // Redirecionar conforme tipo
+            //     if (dados.usuario.tipo === 'ADMIN') {
+            //         location.href = './pages/home.html'
+            //     } else {
+            //         location.href = './pages/loja.html'
+            //     }
+            // }, 1500)
     })
     .catch((err)=>{
         console.error('Falha ao fazer login!',err)

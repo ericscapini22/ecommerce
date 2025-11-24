@@ -15,8 +15,8 @@ async function cadastrar(req, res) {
         const dados = await usuarioService.cadastrar(valores)
         return res.status(201).json({ message: "Usuário cadastrado com sucesso!", dados })
     } catch (err) {
-        console.error("Erro ao cadastrar usuário!", err)
-        return res.status(500).json({ message: "Erro ao cadastrar usuário!" })
+        console.error("Erro no controller de cadastro:", err)
+        return res.status(500).json({ message: "Erro ao cadastrar usuário!", err})
     }
 }
 

@@ -5,7 +5,7 @@ const { hashSenha } = require('./bcrypt.service')
 
 // ======================= CADASTRAR ==========================
 async function cadastrar(dados) {
-    const { nome, email, telefone, cpf, identidade, senha } = dados
+    const { nome, email, telefone, cpf, identidade, senha, tipo_usuario } = dados
 
     // validações
     if (!nome || !email || !telefone || !cpf || !senha) {
@@ -33,7 +33,8 @@ async function cadastrar(dados) {
         telefone,
         cpf,
         identidade,
-        senha: senhaBcrypt
+        senha: senhaBcrypt,
+        tipo_usuario: tipo_usuario
     })
 
     return { ok: true }

@@ -102,9 +102,11 @@ body {
             rgba(0, 0, 0, 0.4)),
         var(--bg-image3);
 
+    min-height: 60vh;   
     background-size: cover;
     background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 150px;         /* Aumentado */
@@ -124,6 +126,32 @@ body {
     flex-direction: column;   /* 👈 ADICIONE ISSO */
     justify-content: center;
     align-items: center;
+}
+
+.hero2 h1 {
+    font-family: var(--font-title);
+    font-size: 34px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.hero2 p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.92);
+    margin: 0 auto;
+    letter-spacing: 0.1px;
+}
+
+/* Estética extra (opcional): destaque do primeiro período */
+.hero2 p::first-letter {
+    font-weight: 700;
+}
+
+.espaco3 {
+    padding-top: 300px;
 }
 
 .espaco2 {
@@ -184,6 +212,32 @@ tr:last-child td {
 tr:hover {
     background: rgba(255, 255, 255, 0.05);
     transition: 0.2s;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.table-wrapper table {
+    width: max-content; /* tabela cresce sem quebrar */
+    border-collapse: collapse;
+    white-space: nowrap; /* impede quebrar */
+}
+
+.table-wrapper td, 
+.table-wrapper th {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* opcional: hover mostra texto completo */
+.table-wrapper td:hover {
+    white-space: normal;
+    overflow: visible;
 }
 
 
@@ -255,4 +309,35 @@ tr:hover {
     padding: 70px 28px;         /* Aumentado */
     text-align: center;
     font-size: 18px;            /* Aumentado */
+}
+
+/* ===== FIX VISUAL DA PÁGINA GERENCIAR PRODUTO ===== */
+
+.conteudo-gerenciar {
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 200px;       /* empurra abaixo do header */
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.tabela {
+    width: 60%;              /* tabela ocupa metade da tela */
+}
+
+#cadProduto {
+    width: 35%;              /* formulário ocupa a outra parte */
+}
+
+
+/* hero3 não deve ter 100vh pois causa corte */
+.hero3 {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+#cadProduto {
+    min-width: 430px;
 }

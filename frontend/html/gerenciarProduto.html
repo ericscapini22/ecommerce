@@ -25,21 +25,24 @@
 
 
     <section id="hero" class="hero3">
-        <div class="tabela" id="resListar"></div>
-        <div class="espaco2"></div>
-        <div class="login-box" id="login">
-            <h1>Atualizar produto</h1>
-            <form>
-                <input type="number" id="codProduto" placeholder="Código do produto">
-                <div class="espaco"></div>
-                <h2>Insira novos dados</h2>
-                <input type="text" id="nome" placeholder="Nome do produto" required>
-                <input type="text" id="descricao" placeholder="Descrição (opcional)">
-                <input type="text" id="modelo" placeholder="Modelo" required>
-                <input type="text" id="preco" placeholder="Preço (ex: 699.90)" required>
-                <input type="text" id="imagem_url" placeholder="Link da imagem (opcional)">
-                <button type="submit" id="btnAtualizarProduto">Cadastrar</button>
-            </form>
+        <div class="conteudo-gerenciar">
+            <div class="table-wrapper">
+                <div class="tabela" id="resListar"></div>
+            </div>
+            <div class="login-box" id="cadProduto">
+                <h1>Atualizar produto</h1>
+                <form>
+                    <input type="number" id="codProduto" placeholder="Código do produto">
+                    <div class="espaco"></div>
+                    <h2>Insira novos dados</h2>
+                    <input type="text" id="nome" placeholder="Nome do produto" required>
+                    <input type="text" id="descricao" placeholder="Descrição (opcional)">
+                    <input type="text" id="modelo" placeholder="Modelo" required>
+                    <input type="text" id="preco" placeholder="Preço (ex: 699.90)" required>
+                    <input type="text" id="imagem_url" placeholder="Link da imagem (opcional)">
+                    <button type="submit" id="btnAtualizarProduto">Cadastrar</button>
+                </form>
+            </div>
         </div>
     </section>
     <footer class="footer">

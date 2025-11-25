@@ -54,14 +54,14 @@ btnLogin.addEventListener('click', (e)=>{
             // res.style.textAlign = 'center'
             // res.style.fontWeight = 'bold'
 
-            // setTimeout(() => {
-            //     // Redirecionar conforme tipo
-            //     if (dados.usuario.tipo === 'ADMIN') {
-            //         location.href = './pages/home.html'
-            //     } else {
-            //         location.href = './pages/loja.html'
-            //     }
-            // }, 1500)
+            setTimeout(() => {
+                // Redirecionar conforme tipo
+                if (dados.usuario.tipo === 'ADMIN') {
+                    location.href = './html/home.html'
+                } else {
+                    location.href = './pages/loja.html'
+                }
+            }, 1500)
     })
     .catch((err)=>{
         console.error('Falha ao fazer login!',err)

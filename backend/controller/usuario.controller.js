@@ -16,7 +16,7 @@ async function cadastrar(req, res) {
         return res.status(201).json({ message: "Usuário cadastrado com sucesso!", dados })
     } catch (err) {
         console.error("Erro no controller de cadastro:", err)
-        return res.status(500).json({ message: "Erro ao cadastrar usuário!", err})
+        return res.status(500).json({ message: "Erro ao cadastrar usuário!", err })
     }
 }
 
@@ -33,8 +33,8 @@ async function listar(req, res) {
 async function consultar(req, res) {
     const { nome } = req.query
 
-    if(!nome) { 
-        res.status(400).json({message: "Prencha o nome do usuário que deseja buscar!"}) 
+    if (!nome) {
+        res.status(400).json({ message: "Prencha o nome do usuário que deseja buscar!" })
     }
 
     try {
@@ -50,16 +50,16 @@ async function atualizar(req, res) {
     const valores = req.body
     const { id } = req.params
 
-    if(!id) { 
-        res.status(400).json({message: "Prencha o código do usuário que deseja atualizar!"}) 
-    } 
-    
-    if(!valores.nome && 
-       !valores.email &&
-       !valores.senha &&
-       !valores.telefone &&
-       !valores.cpf ) {
-            return res.status({message: "Preencha pelo menos um campo para atualizar!"}) 
+    if (!id) {
+        res.status(400).json({ message: "Prencha o código do usuário que deseja atualizar!" })
+    }
+
+    if (!valores.nome &&
+        !valores.email &&
+        !valores.senha &&
+        !valores.telefone &&
+        !valores.cpf) {
+        return res.status({ message: "Preencha pelo menos um campo para atualizar!" })
     }
 
     try {
@@ -74,8 +74,8 @@ async function atualizar(req, res) {
 async function apagar(req, res) {
     const { id } = req.params
 
-    if(!id) { 
-        res.status(400).json({message: "Prencha o código do usuário que deseja atualizar!"}) 
+    if (!id) {
+        res.status(400).json({ message: "Prencha o código do usuário que deseja atualizar!" })
     }
 
     try {

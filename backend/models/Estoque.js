@@ -32,4 +32,4 @@ const Estoque = db.define('estoque',{
     tableName: 'estoques'
 })
 
-module.exports = Estoque
+module.exports = Estoque 

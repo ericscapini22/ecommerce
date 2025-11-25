@@ -11,9 +11,11 @@ app.use(cors())
 // ---- Rotas ----
 const usuarioRoutes = require('../routes/usuario.routes')
 const authRoutes = require('../routes/auth.routes')
+const produtoRoutes = require('../routes/produto.routes')
 
 app.use('/usuario', usuarioRoutes)
 app.use('/', authRoutes)
+app.use('/produto', produtoRoutes)
 
 app.get('/', (req, res) => {
     res.status(200).json({message: "Aplicação Rodando!"})

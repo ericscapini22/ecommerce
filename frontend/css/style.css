@@ -7,6 +7,9 @@
     --red: #d40000;
 }
 
+/* ---------------------- */
+/* RESET GLOBAL           */
+/* ---------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -20,12 +23,14 @@ body {
     overflow-x: hidden;
 }
 
-/* HEADER */
+/* ---------------------- */
+/* HEADER                 */
+/* ---------------------- */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 55px;        /* Aumentado */
+    padding: 30px 55px;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     position: fixed;
@@ -38,19 +43,20 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    height: 80px;              /* Aumentado */
+    height: 80px;
+    cursor: pointer;
 }
 
 .logo-img {
-    height: 90px;              /* Aumentado */
-    width: 150px;              /* Aumentado */
+    height: 90px;
+    width: 150px;
 }
 
 .nav a {
-    margin-left: 40px;         /* Aumentado */
+    margin-left: 40px;
     text-decoration: none;
     color: #fff;
-    font-size: 19px;           /* Aumentado */
+    font-size: 19px;
     transition: 0.3s;
 }
 
@@ -60,145 +66,112 @@ body {
 
 .nav span {
     color: #fff;
-    font-size: 19px;           /* Aumentado */
+    font-size: 19px;
     font-weight: 520;
 }
 
-/* HERO */
-.hero {
+/* ---------------------- */
+/* HERO SECTIONS          */
+/* ---------------------- */
+.hero,
+.hero1,
+.hero2,
+.hero3 {
     height: 100vh;
-    background-image: linear-gradient(to right,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.4)),
-        var(--bg-image);
-
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;         /* Aumentado */
+    padding-top: 150px;
+}
+
+.hero {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image);
 }
 
 .hero1 {
-    height: 100vh;
-    background-image: linear-gradient(to right,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.4)),
-        var(--bg-image2);
-
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 150px;         /* Aumentado */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image2);
 }
 
 .hero2 {
-    height: 100vh;
-    background-image: linear-gradient(to right,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.4)),
-        var(--bg-image3);
-
-    min-height: 60vh;   
-    background-size: cover;
-    background-position: center;
-    display: flex;
+    min-height: 60vh;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 150px;         /* Aumentado */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
 }
 
 .hero3 {
-    height: 100vh;
-    background-image: linear-gradient(to right,
-            rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.4)),
-        var(--bg-image3);
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    flex-direction: column;   /* 👈 ADICIONE ISSO */
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
+    padding-bottom: 80px;
 }
 
 .hero2 h1 {
     font-family: var(--font-title);
     font-size: 34px;
-    line-height: 1.1;
-    margin-bottom: 14px;
-    color: #ffffff;
+    margin-bottom: 50px;
+    color: #fff;
 }
 
 .hero2 p {
-    font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.6;
+    max-width: 600px;
     color: rgba(255,255,255,0.92);
-    margin: 0 auto;
-    letter-spacing: 0.1px;
+    line-height: 1.8;
 }
 
-/* Estética extra (opcional): destaque do primeiro período */
 .hero2 p::first-letter {
     font-weight: 700;
 }
 
-.espaco3 {
-    padding-top: 300px;
-}
+/* ---------------------- */
+/* SPACING UTILITIES      */
+/* ---------------------- */
+.espaco3 { padding-top: 300px; }
+.espaco2 { padding-top: 120px; }
+.espaco { padding-top: 16px; }
 
-.espaco2 {
-    padding-top: 120px;
+/* ---------------------- */
+/* TABLE (GERENCIAR PROD) */
+/* ---------------------- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible; /* evita cortar a borda externa */
+    padding: 2px; /* garante a borda visível */
 }
 
 table {
-    width: 100%;
-    border-collapse: separate;   /* IMPORTANTE — impede que a borda externa desapareça */
-    border-spacing: 0;           /* remove espaços */
-    margin-bottom: 20px;
-    background: rgba(0, 0, 0, 0.75);
+    width: max-content;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(0,0,0,0.75);
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
 
-    /* Borda EXTERNA */
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    /* BORDA EXTERNA */
+    border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Cabeçalho */
 th {
     padding: 14px 18px;
-    text-align: left;
     font-size: 17px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255,255,255,0.06);
     font-weight: bold;
-    color: #fff;
-
-    /* bordas internas */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
 }
 
 th:last-child {
     border-right: none;
 }
 
-/* Células */
 td {
     padding: 14px 18px;
     font-size: 16px;
-    color: #fff;
-
-    /* bordas internas */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
 }
 
 td:last-child {
@@ -210,72 +183,55 @@ tr:last-child td {
 }
 
 tr:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transition: 0.2s;
+    background: rgba(255,255,255,0.05);
 }
 
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-.table-wrapper table {
-    width: max-content; /* tabela cresce sem quebrar */
-    border-collapse: collapse;
-    white-space: nowrap; /* impede quebrar */
-}
-
-.table-wrapper td, 
+.table-wrapper td,
 .table-wrapper th {
     max-width: 200px;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-/* opcional: hover mostra texto completo */
 .table-wrapper td:hover {
     white-space: normal;
     overflow: visible;
 }
 
-
-/* LOGIN */
+/* ---------------------- */
+/* LOGIN BOX              */
+/* ---------------------- */
 .login-box {
     background: rgba(0, 0, 0, 0.75);
-    padding: 55px 48px;         /* Aumentado */
-    border-radius: 15px;        /* Aumentado */
-    width: 400px;               /* Aumentado */
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6); /* Aumentado */
+    padding: 55px 48px;
+    border-radius: 15px;
+    width: 400px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 35px rgba(0,0,0,0.6);
 }
 
 .login-box input {
     width: 100%;
-    padding: 15px;              /* Aumentado */
-    margin-top: 16px;           /* Aumentado */
+    padding: 15px;
+    margin-top: 16px;
     background: #111;
     border: 1px solid #333;
-    border-radius: 8px;         /* Aumentado */
+    border-radius: 8px;
     color: white;
-    font-size: 16px;            /* Aumentado */
-}
-
-.espaco {
-    padding-top: 16px;
+    font-size: 16px;
 }
 
 .login-box button {
     width: 100%;
-    margin-top: 25px;           /* Aumentado */
-    padding: 15px;              /* Aumentado */
+    margin-top: 25px;
+    padding: 15px;
     background: var(--red);
     border: none;
     color: white;
     font-weight: bold;
-    font-size: 17px;            /* Aumentado */
-    border-radius: 8px;         /* Aumentado */
+    font-size: 17px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -284,60 +240,44 @@ tr:hover {
 }
 
 .login-box p {
-    margin-top: 12px;           /* Aumentado */
-    font-size: 15px;            /* Aumentado */
-    text-decoration: double;
+    margin-top: 12px;
+    font-size: 15px;
     font-family: var(--font-title);
     font-weight: bold;
 }
 
 .login-box p a {
     text-decoration: none;
-    font-size: 15px;            /* Aumentado */
-    color: rgb(55, 55, 255);
+    font-size: 15px;
+    color: rgb(55,55,255);
 }
 
 .login-box p a:hover {
-    text-decoration: none;
     color: #d40000;
 }
 
-
-/* FOOTER */
-.footer {
-    background: #000;
-    padding: 70px 28px;         /* Aumentado */
-    text-align: center;
-    font-size: 18px;            /* Aumentado */
-}
-
-/* ===== FIX VISUAL DA PÁGINA GERENCIAR PRODUTO ===== */
-
+/* ---------------------- */
+/* LAYOUT – GERENCIAR     */
+/* ---------------------- */
 .conteudo-gerenciar {
     width: 90%;
     max-width: 1400px;
-    margin-top: 200px;       /* empurra abaixo do header */
+    margin-top: 200px;
     display: flex;
     justify-content: space-between;
     gap: 50px;
     align-items: flex-start;
 }
 
-.tabela {
-    width: 60%;              /* tabela ocupa metade da tela */
-}
+.tabela { width: 60%; }
+#cadProduto { width: 35%; min-width: 430px; }
 
-#cadProduto {
-    width: 35%;              /* formulário ocupa a outra parte */
-}
-
-
-/* hero3 não deve ter 100vh pois causa corte */
-.hero3 {
-    min-height: 100vh;
-    padding-bottom: 80px;
-}
-
-#cadProduto {
-    min-width: 430px;
+/* ---------------------- */
+/* FOOTER                 */
+/* ---------------------- */
+.footer {
+    background: #000;
+    padding: 70px 28px;
+    text-align: center;
+    font-size: 18px;
 }

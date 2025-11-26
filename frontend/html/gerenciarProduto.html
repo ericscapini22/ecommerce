@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar - Peças Automotivas</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_gerenciar.css">
     <script src="../js/gerenciarProduto.js" defer></script>
 </head>
 
 <body>
     <header class="header">
         <h1 class="logo">
-            <img src="../assets/logo_cpb.png" alt="Logo da Classic Parts Brasil" class="logo-img">
+            <img src="../assets/logo_cpb.png" alt="Logo da Classic Parts Brasil" class="logo-img" onclick="window.location = '../index.html'">
         </h1>
         <nav class="nav">
             <span id="nomeUsuario" class="nome-usuario">Usuário</span>
@@ -25,26 +26,47 @@
 
 
     <section id="hero" class="hero3">
-        <div class="conteudo-gerenciar">
-            <div class="table-wrapper">
-                <div class="tabela" id="resListar"></div>
-            </div>
-            <div class="login-box" id="cadProduto">
-                <h1>Atualizar produto</h1>
+    <div class="conteudo-gerenciar">
+
+        <!-- TABELA -->
+        <div class="table-wrapper">
+            <div class="tabela" id="resListar"></div>
+        </div>
+
+        <!-- COLUNA DA DIREITA (atualizar + deletar) -->
+        <div class="right-column">
+
+            <!-- ATUALIZAR PRODUTO -->
+            <div class="login-box" id="cadProduto" required>
+                <h1>Atualizar Produto</h1>
                 <form>
                     <input type="number" id="codProduto" placeholder="Código do produto">
                     <div class="espaco"></div>
                     <h2>Insira novos dados</h2>
                     <input type="text" id="nome" placeholder="Nome do produto" required>
-                    <input type="text" id="descricao" placeholder="Descrição (opcional)">
+                    <input type="text" id="descricao" placeholder="Descrição">
                     <input type="text" id="modelo" placeholder="Modelo" required>
                     <input type="text" id="preco" placeholder="Preço (ex: 699.90)" required>
-                    <input type="text" id="imagem_url" placeholder="Link da imagem (opcional)">
-                    <button type="submit" id="btnAtualizarProduto">Cadastrar</button>
+                    <input type="text" id="imagem_url" placeholder="Link da imagem">
+                    <button type="submit" id="btnAtualizarProduto">Atualizar</button>
+                    <p class="alerta-atualiza">(Pode atualizar somente um campo)</p>
                 </form>
             </div>
-        </div>
-    </section>
+
+            <!-- EXCLUIR PRODUTO -->
+            <div class="login-box delete-box">
+                <h1>Apagar Produto</h1>
+                <form id="formDelete">
+                    <input type="number" id="codDelete" placeholder="Código do produto">
+                    <button type="submit" id="btnDelete">Excluir</button>
+                    <p class="alerta-delete">Esta ação é irreversível ⚠️</p>
+                </form>
+            </div>
+            <div class="espaco2"></div>
+        </div><!-- END right-column -->
+
+    </div><!-- END conteudo-gerenciar -->
+</section>
     <footer class="footer">
         <p>© 2025 Garage Classics. Todos os direitos reservados.</p>
         <p>Política de Privacidade | Termos de Uso | Contato</p>

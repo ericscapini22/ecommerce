@@ -42,33 +42,6 @@ async function atualizarProduto(id, dados) {
 
 }
 
-async function atualizarProdutoCompleto(id, dados) {
-
-    const produto = await Produto.findByPk(id)
-
-    if (!produto) {
-        throw new Error('Produto não encontrado!')
-    }
-
-    const { nome, descricao, modelo, preco, imagem_url, ativo } = dados
-
-    // Validações básicas
-    if (!nome || !modelo || !preco) {
-        throw new Error('Nome, modelo e preço são obrigatórios!')
-    }
-
-    await produto.update({
-        nome,
-        descricao,
-        modelo,
-        preco,
-        imagem_url,
-        ativo
-    })
-
-    return produto
-}
-
 async function apagarProduto(id) {
 
     const produto = await Produto.findByPk(id)
@@ -83,4 +56,4 @@ async function apagarProduto(id) {
 }
 
 
-module.exports = { criarProduto, listarProdutos, atualizarProduto, atualizarProdutoCompleto, apagarProduto }
+module.exports = { criarProduto, listarProdutos, atualizarProduto, apagarProduto }

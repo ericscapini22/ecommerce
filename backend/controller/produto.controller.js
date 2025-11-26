@@ -45,24 +45,6 @@ async function atualizar(req, res) {
 
 }
 
-// PUT - Atualização total
-async function atualizarCompleto(req, res) {
-    try {
-        const { id } = req.params
-        const dados = req.body
-
-        const produtoAtualizado = await atualizarProdutoCompleto(id, dados)
-
-        return res.status(200).json({
-            mensagem: "Produto atualizado completamente com sucesso!",
-            produto: produtoAtualizado
-        })
-
-    } catch (err) {
-        return res.status(500).json({ erro: err.message })
-    }
-}
-
 // DELETE - apagar
 async function apagar(req, res) {
     try {
@@ -78,4 +60,4 @@ async function apagar(req, res) {
 }
 
 
-module.exports = { criar, listar, atualizar, atualizarCompleto, apagar }
+module.exports = { criar, listar, atualizar, apagar }

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { criar, listar, atualizar,atualizarCompleto, apagar } = require('../controller/produto.controller')
+const { criar, listar, atualizar, apagar } = require('../controller/produto.controller')
 
 // Middlewares
 const authMiddleware = require('../middleware/auth.middleware')
@@ -28,14 +28,6 @@ router.patch(
 authMiddleware,
 isAdminMiddleware,
 atualizar
-)
-
-// PUT - completo
-router.put(
-    '/:id', 
-    authMiddleware, 
-    isAdminMiddleware, 
-    atualizarCompleto
 )
 
 // DELETE

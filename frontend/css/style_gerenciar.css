@@ -1,0 +1,41 @@
+.delete-box {
+    margin-top: 20px;
+    border: 1px solid #ff4444;
+    width: 431px;
+}
+
+.delete-box h1 {
+    color: #ff4444;
+}
+
+.delete-box button {
+    background: #d40000;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.delete-box button:hover {
+    background-color: rgb(110, 9, 9);
+}
+
+.alerta-atualiza {
+    text-align: center;
+}
+
+.alerta-delete {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ffbbbb;
+    text-align: center;
+}
+
+.right-column {
+    width: 35%;
+    min-width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px; /* espaço entre atualizar e deletar */
+}

@@ -1,6 +1,5 @@
 let nomeUsuario = document.getElementById('nomeUsuario')
 let btnLogout = document.getElementById('btnLogout')
-let btnAtualizarProduto = document.getElementById('btnAtualizarProduto')
 let resListar = document.getElementById('resListar')
 
 console.log(nomeUsuario)
@@ -19,7 +18,12 @@ onload = () => {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(resp => resp.json())
+        .then(resp => {
+            if (!resp.ok) {
+                throw new Error("Erro ao listar produtos!");
+            }
+            return resp.json();
+        })
         .then(dados => {
             resListar.innerHTML = ``
             dados.sort((a, b) => a.nome.localeCompare(b.nome))
@@ -31,10 +35,12 @@ onload = () => {
         })
 }
 
+let btnAtualizarProduto = document.getElementById('btnAtualizarProduto')
+
 btnAtualizarProduto.addEventListener('click', (e) => {
     e.preventDefault()
 
-    let codProduto = Number(document.getElementById(codProduto).value)
+    let codProduto = Number(document.getElementById('codProduto').value)
     let nome = document.getElementById('nome').value
     let descricao = document.getElementById('descricao').value
     let modelo = document.getElementById('modelo').value
@@ -42,7 +48,6 @@ btnAtualizarProduto.addEventListener('click', (e) => {
     let imagem_url = document.getElementById('imagem_url').value
 
     const dados = {
-        codProduto: codProduto,
         nome: nome,
         descricao: descricao,
         modelo: modelo,
@@ -50,21 +55,70 @@ btnAtualizarProduto.addEventListener('click', (e) => {
         imagem_url: imagem_url
     }
 
+    for (let key in dados) {
+        if (dados[key] === "" || dados[key] === null) {
+            delete dados[key];
+        }
+    }
+
     fetch(`http://localhost:3000/produto/${codProduto}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(dados)
     })
-        .then(resp => resp.json())
+        .then(resp => {
+            if (!resp.ok) {
+                throw new Error("Erro ao atualizar!");
+            }
+            return resp.json();
+        })
+
         .then(dados => {
-            alert('Produto cadastrado com sucesso!')
+            alert('Produto atualizado com sucesso!')
+            document.querySelector('form').reset()
+            onload()
         })
         .catch((err) => {
-            console.error('Falha ao cadastrar produto!', err)
-            alert('Falha ao cadastrar produto!')
+            console.error('Falha ao atualizar produto!', err)
+            alert('Falha ao atualizar produto!')
+        })
+})
+
+let btnDelete = document.getElementById('btnDelete')
+
+document.getElementById('formDelete').addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    let codDelete = Number(document.getElementById('codDelete').value)
+
+    if (!codDelete) {
+        alert("Informe um código válido!")
+        return
+    }
+
+    if (!confirm("Tem certeza que deseja excluir este produto?")) return
+
+    fetch(`http://localhost:3000/produto/${codDelete}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(resp => {
+            if (!resp.ok) throw new Error("Erro ao apagar!")
+            return resp.json()
+        })
+        .then(() => {
+            alert('Produto apagado com sucesso!')
+            document.getElementById('formDelete').reset()
+            onload() // atualiza a tabela
+        })
+        .catch(err => {
+            console.error('Erro ao apagar produto!', err)
+            alert('Falha ao apagar produto!')
         })
 })
 

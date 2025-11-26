@@ -1,6 +1,6 @@
 let btnCadUsuario = document.getElementById('btnCadUsuario')
 
-btnCadUsuario.addEventListener('click', (e)=>{
+btnCadUsuario.addEventListener('click', (e) => {
     e.preventDefault()
 
     let nome = document.getElementById('nome').value
@@ -22,19 +22,24 @@ btnCadUsuario.addEventListener('click', (e)=>{
     fetch('http://localhost:3000/usuario', {
         method: 'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(dados)
     })
-    .then(resp => resp.json())
-    .then(dados => {
-        
-        setTimeout(()=>{ 
-            window.location = '../index.html'
-        }, 2000)
-    })
-    .catch((err)=>{
-        console.error('Falha ao cadastrar usuário!',err)
-        alert('Falha ao cadastrar usuário!')
-    })
+        .then(resp => {
+            if (!resp.ok) {
+                throw new Error("Erro ao cadastrar!");
+            }
+            return resp.json();
+        })
+        .then(dados => {
+
+            setTimeout(() => {
+                window.location = '../index.html'
+            }, 2000)
+        })
+        .catch((err) => {
+            console.error('Falha ao cadastrar usuário!', err)
+            alert('Falha ao cadastrar usuário!')
+        })
 })

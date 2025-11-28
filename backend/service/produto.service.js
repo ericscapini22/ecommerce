@@ -1,4 +1,4 @@
-const Produto = require('../models/Produto')
+const { Produto } = require('../models/rel')
 
 async function criarProduto(dados) {
 
@@ -21,10 +21,17 @@ async function criarProduto(dados) {
     return novoProduto
 }
 
-async function listarProdutos() {
-    const produtos = await Produto.findAll()
-    return produtos
-}
+
+const listarProdutos = async () => {
+    try {
+        const produtos = await Produto.findAll();
+
+        return produtos;
+    } catch (error) {
+        console.error("Erro no ProdutoService.listarProdutos:", error);
+        throw new Error("Erro ao listar produtos!");
+    }
+};
 
 async function atualizarProduto(id, dados) {
 

@@ -44,12 +44,12 @@ btnCadProduto.addEventListener('click', (e) => {
             return resp.json();
         })
         .then(dados => {
-            alert('Produto cadastrado com sucesso!')
+            alert(dados.message)
             document.querySelector('form').reset()
         })
         .catch((err) => {
             console.error('Falha ao cadastrar produto!', err)
-            alert('Falha ao cadastrar produto!')
+            alert(err.message)
         })
 })
 

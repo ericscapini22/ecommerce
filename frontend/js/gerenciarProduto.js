@@ -69,21 +69,19 @@ btnAtualizarProduto.addEventListener('click', (e) => {
         },
         body: JSON.stringify(dados)
     })
-        .then(resp => {
-            if (!resp.ok) {
-                throw new Error("Erro ao atualizar!");
-            }
-            return resp.json();
-        })
+        .then(resp => resp.json().then(body => {
+            if (!resp.ok) throw new Error(body.message);
+            return body;
+        }))
 
         .then(dados => {
-            alert('Produto atualizado com sucesso!')
+            alert(dados.message)
             document.querySelector('form').reset()
             onload()
         })
         .catch((err) => {
             console.error('Falha ao atualizar produto!', err)
-            alert('Falha ao atualizar produto!')
+            alert(err.message)
         })
 })
 
@@ -107,18 +105,55 @@ document.getElementById('formDelete').addEventListener('submit', (e) => {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(resp => {
-            if (!resp.ok) throw new Error("Erro ao apagar!")
-            return resp.json()
-        })
+        .then(resp => resp.json().then(body => {
+            if (!resp.ok) throw new Error(body.message);
+            return body;
+        }))
         .then(() => {
-            alert('Produto apagado com sucesso!')
+            alert(dados.message)
             document.getElementById('formDelete').reset()
             onload() // atualiza a tabela
         })
         .catch(err => {
             console.error('Erro ao apagar produto!', err)
-            alert('Falha ao apagar produto!')
+            alert(err.message)
+        })
+})
+
+let btnMovimentar = document.getElementById('btnMovimentar')
+
+btnMovimentar.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    let idProduto = Number(document.getElementById('idProduto').value)
+    let tipo = document.getElementById('tipo').value
+    let qtdeMovimento = Number(document.getElementById('qtdeMovimento').value)
+
+    const dados = {
+        idProduto: idProduto,
+        tipo: tipo,
+        qtdeMovimento: qtdeMovimento
+    }
+
+    fetch('http://localhost:3000/estoque', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(dados)
+    })
+        .then(resp => resp.json().then(body => {
+            if (!resp.ok) throw new Error(body.message);
+            return body;
+        }))
+        .then(dados => {
+            alert(dados.message)
+            onload()
+        })
+        .catch((err) => {
+            console.error('Erro ao movimentar estoque!', err)
+            alert(err.message)
         })
 })
 
@@ -143,7 +178,6 @@ btnLogout.addEventListener('click', (e) => {
     location.href = '../index.html'
 })
 
-
 function gerarTabela(dados) {
     let tab = `
         <thead>
@@ -152,22 +186,27 @@ function gerarTabela(dados) {
             <th>Descrição</th>
             <th>Modelo</th>
             <th>Preço</th>
+            <th>Estoque</th>
             <th>Imagem (link)</th>
         </thead>
     `
+
     tab += `<tbody>`
+
     dados.forEach(dad => {
         tab += `
             <tr>
                 <td>${dad.codProduto}</td>
                 <td>${dad.nome}</td>
-                <td>${dad.descricao}</td>
+                <td>${dad.descricao || '-'}</td>
                 <td>${dad.modelo}</td>
-                <td>${dad.preco}</td>
+                <td>R$ ${Number(dad.preco).toFixed(2)}</td>
+                <td>${dad.estoque ?? 'Sem estoque'}</td>
                 <td>${dad.imagem_url}</td>
             </tr>
         `
     })
+
     tab += `</tbody>`
 
     return tab

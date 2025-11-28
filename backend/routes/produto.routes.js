@@ -17,17 +17,18 @@ router.post(
 
 // GET – Listar produtos (qualquer usuário logado)
 router.get(
-'/',
-authMiddleware,
-listar
+    '/',
+    authMiddleware,
+    isAdminMiddleware,
+    listar
 )
 
 // Atualizar parcialmente produto (ADMIN)
 router.patch(
-'/:id',
-authMiddleware,
-isAdminMiddleware,
-atualizar
+    '/:id',
+    authMiddleware,
+    isAdminMiddleware,
+    atualizar
 )
 
 // DELETE

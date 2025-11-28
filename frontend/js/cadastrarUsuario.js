@@ -27,10 +27,10 @@ btnCadUsuario.addEventListener('click', (e) => {
         body: JSON.stringify(dados)
     })
         .then(resp => {
-            if (!resp.ok) {
-                throw new Error("Erro ao cadastrar!");
-            }
-            return resp.json();
+            return resp.json().then(body => {
+                if (!resp.ok) throw new Error(body.message);
+                return body;
+            });
         })
         .then(dados => {
 
@@ -40,6 +40,6 @@ btnCadUsuario.addEventListener('click', (e) => {
         })
         .catch((err) => {
             console.error('Falha ao cadastrar usuário!', err)
-            alert('Falha ao cadastrar usuário!')
+            alert(err.message)
         })
 })

@@ -1,17 +1,10 @@
 let btnLogin = document.getElementById('btnLogin')
 
-btnLogin.addEventListener('click', (e)=>{
+btnLogin.addEventListener('click', (e) => {
     e.preventDefault()
 
     let email = document.getElementById('email').value
     let senha = document.getElementById('senha').value
-
-    if (!email || !senha) {
-        res.innerHTML = `Preencha todos os campos!`
-        res.style.color = 'red'
-        res.style.textAlign = 'center'
-        return
-    }
 
     const dados = {
         email: email,
@@ -21,15 +14,18 @@ btnLogin.addEventListener('click', (e)=>{
     fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(dados)
     })
-    .then(resp => resp.json())
-    .then(dados => {
-        alert('Login realizado com sucesso!')
+        .then(resp => resp.json().then(body => {
+            if (!resp.ok) throw new Error(body.message);
+            return body;
+        }))
+        .then(dados => {
+            alert(dados.message)
 
-        console.log(dados)
+            console.log(dados)
             console.log('nome', dados.usuario.nome)
             console.log('tipo', dados.usuario.tipo)
 
@@ -45,15 +41,7 @@ btnLogin.addEventListener('click', (e)=>{
             // Salvar nome
             sessionStorage.setItem('nome', dados.usuario.nome)
             sessionStorage.setItem('tipo', dados.usuario.tipo)
-
-            // res.innerHTML = `<br>`
-            // res.innerHTML += `<hr>`
-            // res.innerHTML += `<br>`
-            // res.innerHTML += `Login realizado com sucesso!`
-            // res.style.color = 'white'
-            // res.style.textAlign = 'center'
-            // res.style.fontWeight = 'bold'
-
+            
             setTimeout(() => {
                 // Redirecionar conforme tipo
                 if (dados.usuario.tipo === 'ADMIN') {
@@ -62,9 +50,9 @@ btnLogin.addEventListener('click', (e)=>{
                     location.href = './pages/loja.html'
                 }
             }, 1500)
-    })
-    .catch((err)=>{
-        console.error('Falha ao fazer login!',err)
-        alert('Falha ao fazer login!')
-    })
+        })
+        .catch((err) => {
+            console.error('Falha ao fazer login!', err)
+            alert(err.message)
+        })
 })

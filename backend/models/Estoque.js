@@ -10,21 +10,24 @@ const Estoque = db.define('estoque',{
     idProduto: { 
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true, // Garante o relacionamento 1:1
         references: {
             model: 'produtos', 
             key: 'codProduto'  
         }
     },
-    quantidade_atual: {
+    tipo: {
+        type: DataTypes.ENUM('ENTRADA','SAIDA'),
+        allowNull: false
+    },
+    qtdeMovimento: {
         type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0 // Saldo atual do item no estoque
+        allowNull: false,
+        defaultValue: 0 
     },
     quantidade_minima: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        defaultValue: 0 // Quantidade mínima
+        defaultValue: 5 // Quantidade mínima
     }
 },{
     // ALTERADO: Manter timestamps (createdAt e updatedAt) é útil para auditoria do estoque
@@ -32,4 +35,4 @@ const Estoque = db.define('estoque',{
     tableName: 'estoques'
 })
 
-module.exports = Estoque 
+module.exports = Estoque

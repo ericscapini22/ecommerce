@@ -23,6 +23,11 @@ const Produto = db.define('produto',{
         type: DataTypes.DECIMAL(10,2), // Preço de venda
         allowNull: false
     },
+    estoque: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0
+    },
     imagem_url: {
         type: DataTypes.STRING(255),
         allowNull: true

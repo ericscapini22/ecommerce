@@ -1,15 +1,21 @@
+/* ----------------------------------- */
+/* ROOT / VARIÁVEIS                     */
+/* ----------------------------------- */
 :root {
-    --bg-image: url('../assets/bg1.png');
-    --bg-image2: url('../assets/bg2.png');
-    --bg-image3: url('../assets/bg3.png');
     --font-title: 'Poppins', sans-serif;
     --font-body: 'Roboto Condensed', sans-serif;
+
     --red: #d40000;
+    --text-light: #fff;
+    --bg-dark: #0b0b0b;
+
+    /* você decide se esse background será global mesmo */
+    --bg-hero: url('../assets/bg1.png');
 }
 
-/* ---------------------- */
-/* RESET GLOBAL           */
-/* ---------------------- */
+/* ----------------------------------- */
+/* RESET                                */
+/* ----------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -18,14 +24,14 @@
 
 body {
     font-family: var(--font-body);
-    background: #0b0b0b;
-    color: #fff;
+    background: var(--bg-dark);
+    color: var(--text-light);
     overflow-x: hidden;
 }
 
-/* ---------------------- */
-/* HEADER                 */
-/* ---------------------- */
+/* ----------------------------------- */
+/* HEADER                               */
+/* ----------------------------------- */
 .header {
     display: flex;
     justify-content: space-between;
@@ -37,7 +43,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 20;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .logo {
@@ -52,6 +58,9 @@ body {
     width: 150px;
 }
 
+/* ----------------------------------- */
+/* NAV                                  */
+/* ----------------------------------- */
 .nav a {
     margin-left: 40px;
     text-decoration: none;
@@ -70,211 +79,9 @@ body {
     font-weight: 520;
 }
 
-/* ---------------------- */
-/* HERO SECTIONS          */
-/* ---------------------- */
-.hero,
-.hero1,
-.hero2,
-.hero3 {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 150px;
-}
-
-.hero {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image);
-}
-
-.hero1 {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image2);
-}
-
-.hero2 {
-    min-height: 60vh;
-    flex-direction: column;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
-}
-
-.hero3 {
-    min-height: 100vh;
-    flex-direction: column;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
-    padding-bottom: 80px;
-}
-
-.hero2 h1 {
-    font-family: var(--font-title);
-    font-size: 34px;
-    margin-bottom: 50px;
-    color: #fff;
-}
-
-.hero2 p {
-    font-size: 16px;
-    max-width: 600px;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.8;
-}
-
-.hero2 p::first-letter {
-    font-weight: 700;
-}
-
-/* ---------------------- */
-/* SPACING UTILITIES      */
-/* ---------------------- */
-.espaco3 { padding-top: 300px; }
-.espaco2 { padding-top: 120px; }
-.espaco { padding-top: 16px; }
-
-/* ---------------------- */
-/* TABLE (GERENCIAR PROD) */
-/* ---------------------- */
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: visible; /* evita cortar a borda externa */
-    padding: 2px; /* garante a borda visível */
-}
-
-table {
-    width: max-content;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: rgba(0,0,0,0.75);
-    border-radius: 15px;
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
-
-    /* BORDA EXTERNA */
-    border: 1px solid rgba(255,255,255,0.12);
-}
-
-th {
-    padding: 14px 18px;
-    font-size: 17px;
-    background: rgba(255,255,255,0.06);
-    font-weight: bold;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    border-right: 1px solid rgba(255,255,255,0.12);
-}
-
-th:last-child {
-    border-right: none;
-}
-
-td {
-    padding: 14px 18px;
-    font-size: 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    border-right: 1px solid rgba(255,255,255,0.12);
-}
-
-td:last-child {
-    border-right: none;
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-tr:hover {
-    background: rgba(255,255,255,0.05);
-}
-
-.table-wrapper td,
-.table-wrapper th {
-    max-width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.table-wrapper td:hover {
-    white-space: normal;
-    overflow: visible;
-}
-
-/* ---------------------- */
-/* LOGIN BOX              */
-/* ---------------------- */
-.login-box {
-    background: rgba(0, 0, 0, 0.75);
-    padding: 55px 48px;
-    border-radius: 15px;
-    width: 400px;
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 0 35px rgba(0,0,0,0.6);
-}
-
-.login-box input {
-    width: 100%;
-    padding: 15px;
-    margin-top: 16px;
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-}
-
-.login-box button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 15px;
-    background: var(--red);
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 17px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.login-box button:hover {
-    background-color: rgb(110, 9, 9);
-}
-
-.login-box p {
-    margin-top: 12px;
-    font-size: 15px;
-    font-family: var(--font-title);
-    font-weight: bold;
-}
-
-.login-box p a {
-    text-decoration: none;
-    font-size: 15px;
-    color: rgb(55,55,255);
-}
-
-.login-box p a:hover {
-    color: #d40000;
-}
-
-/* ---------------------- */
-/* LAYOUT – GERENCIAR     */
-/* ---------------------- */
-.conteudo-gerenciar {
-    width: 90%;
-    max-width: 1400px;
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    align-items: flex-start;
-}
-
-.tabela { width: 60%; }
-#cadProduto { width: 35%; min-width: 430px; }
-
-/* ---------------------- */
-/* FOOTER                 */
-/* ---------------------- */
+/* ----------------------------------- */
+/* FOOTER                               */
+/* ----------------------------------- */
 .footer {
     background: #000;
     padding: 70px 28px;

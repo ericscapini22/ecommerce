@@ -6,7 +6,7 @@ async function login({ email, senha }) {
 
 // -------- validação básica --------
 if (!email || !senha) {
-    throw new Error('E-mail e senha são obrigatórios')
+    throw new Error('E-mail e senha são obrigatórios!')
 }
 
 // -------- buscar usuário no banco --------

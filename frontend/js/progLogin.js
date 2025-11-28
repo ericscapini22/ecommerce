@@ -47,7 +47,7 @@ btnLogin.addEventListener('click', (e) => {
                 if (dados.usuario.tipo === 'ADMIN') {
                     location.href = './html/home.html'
                 } else {
-                    location.href = './pages/loja.html'
+                    location.href = './html/loja.html'
                 }
             }, 1500)
         })

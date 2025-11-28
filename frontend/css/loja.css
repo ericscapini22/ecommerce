@@ -1,0 +1,140 @@
+:root {
+    --bg-image3: url('../img/fundo3.jpg');
+}
+
+/* ------------------   HERO DA LOJA  ------------------ */
+.hero-loja {
+    min-height: 100vh;
+    padding: 180px 40px 80px; /* espaço necessário por causa do header fixo */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+/* Remove o flex que estava travando o grid */
+.coluna-vertical {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* ------------------   GRID DE PRODUTOS   ------------------ */
+#listaProdutos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 120px;
+}
+
+/* ------------------   CARD DO PRODUTO   ------------------ */
+.produto {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.produto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 18px rgba(255,255,255,0.25);
+}
+
+.produto img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+/* Texto dos cards */
+.produto h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.produto p {
+    color: #ddd;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+/* Preço destaque */
+.produto .preco {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ff3b3b;
+    margin-top: 8px;
+}
+
+/* ------------------   BOTÕES   ------------------ */
+.produto button {
+    margin-top: 14px;
+    background-color: #ff2020;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.produto button:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
+
+/* ------------------   MODAL DE IMAGEM (ZOOM)   ------------------ */
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.image-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.image-modal-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    animation: zoomIn .25s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ------------------   RESPONSIVIDADE EXTRA   ------------------ */
+@media (max-width: 500px) {
+    .hero-loja {
+        padding: 160px 20px 60px;
+    }
+
+    #listaProdutos {
+        grid-template-columns: 1fr;
+    }
+}

@@ -202,7 +202,9 @@ function gerarTabela(dados) {
                 <td>${dad.modelo}</td>
                 <td>R$ ${Number(dad.preco).toFixed(2)}</td>
                 <td>${dad.estoque ?? 'Sem estoque'}</td>
-                <td>${dad.imagem_url}</td>
+                <td>
+                    <img src="${dad.imagem_url}" alt="Imagem do produto" style="width:80px; object-fit:cover; border-radius:6px;">
+                </td>
             </tr>
         `
     })

@@ -19,7 +19,7 @@ router.post(
 router.get(
     '/',
     authMiddleware,
-    isAdminMiddleware,
+    // isAdminMiddleware,
     listar
 )
 

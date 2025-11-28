@@ -46,6 +46,9 @@ btnCadProduto.addEventListener('click', (e) => {
         .then(dados => {
             alert(dados.message)
             document.querySelector('form').reset()
+            setTimeout(() => {
+                window.location = './gerenciarProduto.html'
+            }, 2000)
         })
         .catch((err) => {
             console.error('Falha ao cadastrar produto!', err)

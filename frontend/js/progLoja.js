@@ -36,34 +36,38 @@ btnLogout.addEventListener("click", (e) => {
 // =========================
 //   PRODUTOS TEMPORÁRIOS
 // =========================
-let produtos = [
-    { id: 1, nome: "Kit - 4 rodas BBS", preco: 3800.90, img: "https://http2.mlstatic.com/D_NQ_NP_2X_672740-MLB83411044974_042025-F.webp" },
-    { id: 2, nome: "Equalizador Pioneer", preco: 4900.00, img: "https://img.olx.com.br/images/14/149588349524631.jpg" },
-    { id: 3, nome: "2 Bancos Recaro", preco: 3499.90, img: "https://http2.mlstatic.com/D_NQ_NP_2X_814156-MLB91917230342_092025-F.webp" },
-    { id: 4, nome: "Kit Turbina", preco: 1899.90, img: "https://http2.mlstatic.com/D_NQ_NP_2X_990731-MLB53162048678_012023-F-turbina-50-zr-5049-com-refluxo.webp" }
-]
+fetch('http://localhost:3000/produto', {
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+})
+.then(resp => resp.json())
+.then(produtos => {
+    produtos.forEach(prod => {
+        lista.innerHTML += `
+            <article class="produto">
+                <figure>
+                    <img src="${prod.imagem_url}">
+                    <h2>${prod.nome}</h2>
+                    <br>
+                    <p>${prod.descricao}</p>
+                </figure>
+                <div class="controle-produto">
+                    <br>
+                    <input type="number" min="1" value="1" id="qtd-${prod.id}">
+                    <br>
+                    <button onclick="add(${prod.id})">Adicionar ao carrinho</button>
+                </div>
+            </article>
+        `
+    })
+})
 
 // =========================
 //   RENDERIZAÇÃO DOS CARDS
 // =========================
 let lista = document.getElementById('listaProdutos');
 
-produtos.forEach(prod => {
-    lista.innerHTML += `
-        <article class="produto">
-            <figure>
-                <img src="${prod.img}">
-                <figcaption>${prod.nome}</figcaption>
-            </figure>
-            <div class="controle-produto">
-                <br>
-                <input type="number" min="1" value="1" id="qtd-${prod.id}">
-                <br>
-                <button onclick="add(${prod.id})">Adicionar</button>
-            </div>
-        </article>
-    `
-})
 
 // =========================
 //   ADICIONAR AO CARRINHO

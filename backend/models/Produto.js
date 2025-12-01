@@ -12,7 +12,7 @@ const Produto = db.define('produto',{
         allowNull: false
     },
     descricao: {
-        type: DataTypes.TEXT(300),
+        type: DataTypes.STRING(300),
         allowNull: true // Pode ser preenchida posteriormente
     },
     modelo: {

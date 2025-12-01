@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho de Compras</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+
+    <!-- JS -->
+    <script src="../js/carrinho.js" defer></script>
+</head>
+
+<body>
+
+    <!-- MENU SUPERIOR -->
+    <header class="header">
+        <h1 class="logo">
+            <img src="../assets/logo_cpb.png" alt="Logo da Classic Parts Brasil" class="logo-img"
+                onclick="window.location = '../index.html'">
+        </h1>
+        <nav class="nav">
+            <a href="./loja.html">Home</a>
+            <a href="./infoUsuario">
+                <span id="nomeUsuario" class="nome-usuario">Usuário</span>
+            </a>
+            <a href="#" id="btnLogout">Sair</a>
+        </nav>
+    </header>
+    <section id="hero" class="hero-carrinho">
+        <h2 class="titulo-carrinho">Resumo do Carrinho</h2>
+
+        <div id="area-carrinho" class="box-carrinho"></div>
+
+        <p id="total" class="total">Total: R$ 0,00</p>
+
+        <div class="botoes">
+            <button id="btn-finalizar" class="btn vermelho">Finalizar Compra</button>
+            <button id="btn-limpar" class="btn cinza">Esvaziar Carrinho</button>
+            <button id="btn-voltar" class="btn preto">Voltar à Loja</button>
+        </div>
+    </section>
+
+</body>
+</html>

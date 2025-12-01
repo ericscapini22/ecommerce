@@ -19,7 +19,7 @@ console.log(nome,tipo)
 
 // Escrever nome na tela
 if (nomeUsuario && nome) {
-    nomeUsuario.innerHTML = `Usuário: ${nome}`
+    nomeUsuario.innerHTML = nome
 }
 
 // Mensagem de boas-vindas

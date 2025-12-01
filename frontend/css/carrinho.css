@@ -1,0 +1,182 @@
+:root {
+    --bg-image3: url('../assets/bg3.png');
+    --font-title: 'Poppins', sans-serif;
+    --font-body: 'Roboto Condensed', sans-serif;
+}
+
+/* ----------------------------------- */
+/* CONTAINER PRINCIPAL                 */
+/* ----------------------------------- */
+.container-carrinho {
+    width: 90%;
+    max-width: 900px;
+    margin: 130px auto 60px auto; /* compensar menu fixo */
+    text-align: center;
+}
+
+.hero-carrinho {
+    min-height: 100vh;
+    padding: 180px 40px 80px; /* espaço necessário por causa do header fixo */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+.titulo-carrinho {
+    font-family: var(--font-title);
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+/* ----------------------------------- */
+/* TABELA DO CARRINHO                  */
+/* ----------------------------------- */
+
+.box-carrinho table {
+    width: max-content;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(0,0,0,0.75);
+    border-radius: 15px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
+
+    /* BORDA EXTERNA */
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+th {
+    padding: 14px 18px;
+    font-size: 17px;
+    background: rgba(255,255,255,0.06);
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+    padding: 14px 18px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.box-carrinho th,
+.box-carrinho td {
+    padding: 18px 12px;
+    font-size: 18px;
+}
+
+.box-carrinho th {
+    background: var(--red);
+    color: #fff;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+}
+
+.box-carrinho tr:nth-child(even) {
+    background: rgba(255, 255, 255, .04);
+}
+
+.box-carrinho tr:hover {
+    background: rgba(255, 255, 255, .09);
+}
+
+.box-carrinho p {
+    font-size: 22px;
+    opacity: 0.75;
+}
+
+/* ----------------------------------- */
+/* TOTAL                               */
+/* ----------------------------------- */
+.total {
+    margin-top: 25px;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: var(--font-title);
+    color: var(--red);
+    display: flex;
+    justify-content: center;
+}
+
+/* ----------------------------------- */
+/* BOTÕES                              */
+/* ----------------------------------- */
+.botoes {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+/* cores dos botões */
+.vermelho {
+    background: var(--red);
+}
+
+.vermelho:hover {
+    background-color: rgb(110, 9, 9);
+}
+
+.cinza {
+    background: #333;
+    color: #eee;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.preto {
+    background: #333;
+    color: #eee;
+}
+
+/* responsividade */
+@media (max-width: 600px) {
+    .box-carrinho table {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+}

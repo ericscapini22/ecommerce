@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar - Usuário</title>
+    <link rel="stylesheet" href="../css/infoUsuario.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/editarUsuario.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">
+            <img src="../assets/logo_cpb.png" alt="Logo da Classic Parts Brasil" class="logo-img" onclick="window.location = '../index.html'">
+        </h1>
+        <nav class="nav">
+            <span id="nomeUsuario" class="nome-usuario">Usuário</span>
+            <a href="#" id="btnLogout">Sair</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-editar">
+        <div class="editar-box" id="editar">
+            <h2>Editar perfil</h2>
+            <form>
+                <input type="text" id="nome" placeholder="">
+                <input type="email" id="email" placeholder="">
+                <input type="text" id="telefone" placeholder="">
+                <input type="text" id="cpf" placeholder="">
+                <input type="text" id="identidade" placeholder="Identidade">
+                <button type="submit" id="btnEditarUsuario">Atualizar</button>
+                <button id="btnApagarUsuario" class="btn-apagar">Excluir minha conta ❌</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Classic Parts Brasil. Todos os direitos reservados.</p>
+        <p>Política de Privacidade | Termos de Uso | Contato</p>
+    </footer>
+
+</body>
+</html>

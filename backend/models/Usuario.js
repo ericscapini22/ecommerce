@@ -25,7 +25,7 @@ const Usuario = db.define('usuario',{
         allowNull: false
     },
     cpf: { 
-        type: DataTypes.STRING(14), // ampo para CPF '123.456.789-55'
+        type: DataTypes.STRING(14), // Campo para CPF '123.456.789-55'
         allowNull: false,
         unique: true
     },

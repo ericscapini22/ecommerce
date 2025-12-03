@@ -1,5 +1,4 @@
 const Usuario = require('../models/Usuario')
-const { Op } = require('sequelize')
 const { validaEmail, validaTelefone, validaCPF } = require('../utils/validacao')
 const { hashSenha } = require('./bcrypt.service')
 
@@ -7,7 +6,6 @@ const { hashSenha } = require('./bcrypt.service')
 async function cadastrar(dados) {
     const { nome, email, telefone, cpf, identidade, senha, tipo_usuario } = dados
 
-    // validações
     if (!nome || !email || !telefone || !cpf || !senha) {
         throw new Error('Campos obrigatórios não informados!')
     }
@@ -16,7 +14,6 @@ async function cadastrar(dados) {
     if (!validaTelefone(telefone)) throw new Error('Telefone inválido!')
     if (!validaCPF(cpf)) throw new Error('CPF inválido!')
 
-    // duplicidades
     if (await Usuario.findOne({ where: { email } })) {
         throw new Error('Email já cadastrado!')
     }
@@ -40,34 +37,40 @@ async function cadastrar(dados) {
     return { ok: true }
 }
 
-// ======================= LISTAR ==========================
 async function listar() {
-    return await Usuario.findAll()
-}
-
-// ======================= CONSULTAR ==========================
-async function consultar(nome) {
     return await Usuario.findAll({
-        where: {
-            nome: { [Op.like]: `%${nome}%` }
-        }
+        attributes: { exclude: ['senha'] }
     })
 }
 
-// ======================= ATUALIZAR ==========================
-async function atualizar(id, valores) {
+async function buscarUsuarioLogado(id) {
+    const usuario = await Usuario.findByPk(id, {
+        attributes: { exclude: ['senha'] }
+    });
+    if (!usuario) {
+        throw new Error("Usuário não encontrado!");
+    }
+    return usuario;
+}
+
+async function atualizar(id, dados) {
     const usuario = await Usuario.findByPk(id)
 
     if (!usuario) {
         throw new Error('Usuário não encontrado!')
     }
 
-    await Usuario.update(valores, { where: { codUsuario: id } })
+    // Bloqueia edição de campos sensíveis
+    delete dados.email
+    delete dados.cpf
+    delete dados.senha
+    delete dados.tipo_usuario
 
-    return await Usuario.findByPk(id)
+    await usuario.update(dados)
+
+    return { message: "Dados atualizados com sucesso!", usuario }
 }
 
-// ======================= APAGAR ==========================
 async function apagar(id) {
     const usuario = await Usuario.findByPk(id)
 
@@ -80,4 +83,4 @@ async function apagar(id) {
     return { ok: true }
 }
 
-module.exports = { cadastrar, listar, consultar, atualizar, apagar }
+module.exports = { cadastrar, listar, atualizar, apagar, buscarUsuarioLogado }

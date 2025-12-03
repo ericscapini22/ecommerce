@@ -38,17 +38,22 @@ btnCadProduto.addEventListener('click', (e) => {
         body: JSON.stringify(dados)
     })
         .then(resp => {
+            // Verifica se a resposta da requisição indica sucesso (status 200–299)
             if (!resp.ok) {
+                // Caso a resposta seja um erro, dispara uma exceção que será capturada no catch
                 throw new Error("Erro ao cadastrar!");
             }
+
+            // Retorna o corpo da resposta já convertido em JSON para o próximo .then
             return resp.json();
         })
+
         .then(dados => {
             alert(dados.message)
             document.querySelector('form').reset()
             setTimeout(() => {
                 window.location = './gerenciarProduto.html'
-            }, 2000)
+            }, 1000)
         })
         .catch((err) => {
             console.error('Falha ao cadastrar produto!', err)

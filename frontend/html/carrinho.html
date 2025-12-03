@@ -4,18 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrinho de Compras</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carrinho.css">
-
-    <!-- JS -->
-    <script src="../js/carrinho.js" defer></script>
+    <script src="../js/movimentarCarrinho.js" defer></script>
 </head>
 
 <body>
-
-    <!-- MENU SUPERIOR -->
     <header class="header">
         <h1 class="logo">
             <img src="../assets/logo_cpb.png" alt="Logo da Classic Parts Brasil" class="logo-img"
@@ -23,25 +17,31 @@
         </h1>
         <nav class="nav">
             <a href="./loja.html">Home</a>
-            <a href="./infoUsuario">
+            <a href="./infoUsuario.html">
                 <span id="nomeUsuario" class="nome-usuario">Usuário</span>
             </a>
             <a href="#" id="btnLogout">Sair</a>
         </nav>
     </header>
     <section id="hero" class="hero-carrinho">
-        <h2 class="titulo-carrinho">Resumo do Carrinho</h2>
+        <div class="section-carrinho">
+            <h2 class="titulo-carrinho">Resumo do Carrinho</h2>
 
-        <div id="area-carrinho" class="box-carrinho"></div>
+            <div id="area-carrinho" class="box-carrinho"></div>
 
-        <p id="total" class="total">Total: R$ 0,00</p>
+            <p id="total" class="total">Total: R$ 0,00</p>
 
-        <div class="botoes">
-            <button id="btn-finalizar" class="btn vermelho">Finalizar Compra</button>
-            <button id="btn-limpar" class="btn cinza">Esvaziar Carrinho</button>
-            <button id="btn-voltar" class="btn preto">Voltar à Loja</button>
+            <div class="botoes">
+                <button id="btn-finalizar" class="btn vermelho">Finalizar Compra</button>
+                <button id="btn-limpar" class="btn cinza">Esvaziar Carrinho</button>
+                <button id="btn-voltar" class="btn preto">Voltar à Loja</button>
+            </div>
         </div>
     </section>
-
+    <footer class="footer">
+        <p>© 2025 Classic Parts Brasil. Todos os direitos reservados.</p>
+        <p>Política de Privacidade | Termos de Uso | Contato</p>
+    </footer>
 </body>
+
 </html>

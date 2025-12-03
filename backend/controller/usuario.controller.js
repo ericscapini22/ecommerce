@@ -30,53 +30,37 @@ async function listar(req, res) {
     }
 }
 
-async function consultar(req, res) {
-    const { nome } = req.query
-
-    if (!nome) {
-        res.status(400).json({ message: "Prencha o nome do usuário que deseja buscar!" })
-    }
-
+async function getUsuarioLogado(req, res) {
     try {
-        const dados = await usuarioService.consultar(nome)
-        return res.status(200).json(dados)
+        const idUsuario = req.user.id;
+        const usuario = await usuarioService.buscarUsuarioLogado(idUsuario);
+        res.status(200).json(usuario);
     } catch (err) {
-        console.error("Erro ao consultar usuário!", err)
-        return res.status(500).json({ message: "Erro ao consultar usuário!" })
+        res.status(400).json({ message: err.message });
     }
 }
 
 async function atualizar(req, res) {
     const valores = req.body
-    const { id } = req.params
-
-    if (!id) {
-        res.status(400).json({ message: "Prencha o código do usuário que deseja atualizar!" })
-    }
+    const id = req.user.id
 
     if (!valores.nome &&
-        !valores.email &&
-        !valores.senha &&
         !valores.telefone &&
-        !valores.cpf) {
-        return res.status({ message: "Preencha pelo menos um campo para atualizar!" })
+        !valores.identidade) {
+        return res.status(400).json({ message: "Preencha pelo menos um campo para atualizar!" })
     }
 
     try {
         const dados = await usuarioService.atualizar(id, valores)
-        return res.status(200).json({ message: "Usuário atualizado com sucesso!", dados })
+        return res.status(200).json(dados)
     } catch (err) {
         console.error("Erro ao atualizar usuário!", err)
-        return res.status(500).json({ message: "Erro ao atualizar usuário!" })
+        return res.status(500).json({ message: err.message })
     }
 }
 
 async function apagar(req, res) {
-    const { id } = req.params
-
-    if (!id) {
-        res.status(400).json({ message: "Prencha o código do usuário que deseja atualizar!" })
-    }
+    const id = req.user.id
 
     try {
         await usuarioService.apagar(id)
@@ -87,4 +71,4 @@ async function apagar(req, res) {
     }
 }
 
-module.exports = { cadastrar, listar, consultar, atualizar, apagar }
+module.exports = { cadastrar, listar, atualizar, apagar, getUsuarioLogado }

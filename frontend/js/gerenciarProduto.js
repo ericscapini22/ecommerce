@@ -97,7 +97,7 @@ document.getElementById('formDelete').addEventListener('submit', (e) => {
         return
     }
 
-    if (!confirm("Tem certeza que deseja excluir este produto?")) return
+    if (!confirm("Tem certeza que deseja desativar este produto?")) return
 
     fetch(`http://localhost:3000/produto/${codDelete}`, {
         method: 'DELETE',
@@ -109,10 +109,9 @@ document.getElementById('formDelete').addEventListener('submit', (e) => {
             if (!resp.ok) throw new Error(body.message);
             return body;
         }))
-        .then(() => {
-            alert(dados.message)
+        .then(body => {
             document.getElementById('formDelete').reset()
-            onload() // atualiza a tabela
+            onload() // recarrega tabela
         })
         .catch(err => {
             console.error('Erro ao apagar produto!', err)
@@ -143,10 +142,16 @@ btnMovimentar.addEventListener('click', (e) => {
         },
         body: JSON.stringify(dados)
     })
-        .then(resp => resp.json().then(body => {
-            if (!resp.ok) throw new Error(body.message);
-            return body;
-        }))
+        .then(resp => {
+            // Verifica se a resposta da requisição indica sucesso (status 200–299)
+            if (!resp.ok) {
+                // Caso a resposta seja um erro, dispara uma exceção que será capturada no catch
+                throw new Error("Erro ao cadastrar!");
+            }
+
+            // Retorna o corpo da resposta já convertido em JSON para o próximo .then
+            return resp.json();
+        })
         .then(dados => {
             alert(dados.message)
             onload()
@@ -188,6 +193,7 @@ function gerarTabela(dados) {
             <th>Preço</th>
             <th>Estoque</th>
             <th>Imagem (link)</th>
+            <th>Ativo</th>
         </thead>
     `
 
@@ -205,6 +211,7 @@ function gerarTabela(dados) {
                 <td>
                     <img src="${dad.imagem_url}" alt=" Sem Imagem" style="width:80px; object-fit:cover; border-radius:6px;">
                 </td>
+                <td>${dad.ativo}</td>
             </tr>
         `
     })

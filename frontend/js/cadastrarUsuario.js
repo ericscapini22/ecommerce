@@ -27,11 +27,17 @@ btnCadUsuario.addEventListener('click', (e) => {
         body: JSON.stringify(dados)
     })
         .then(resp => {
+            // Converte o corpo da resposta para JSON antes de qualquer validação
             return resp.json().then(body => {
+                // Se a resposta não foi bem-sucedida (status fora do intervalo 200–299),
+                // dispara um erro com a mensagem retornada pela API
                 if (!resp.ok) throw new Error(body.message);
+
+                // Se estiver tudo OK, retorna o objeto body para o próximo .then da cadeia
                 return body;
             });
         })
+
         .then(dados => {
 
             setTimeout(() => {

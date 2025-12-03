@@ -17,9 +17,8 @@
                 onclick="window.location = '../index.html'">
         </h1>
         <nav class="nav">
-            <!-- Links -->
             <a href="./cadastrarProduto.html">Cadastrar Produtos</a>
-            <a href="./infoUsuario">
+            <a href="./infoUsuario.html">
                 <span id="nomeUsuario" class="nome-usuario">Usuário</span>
             </a>
             <a href="#" id="btnLogout">Sair</a>
@@ -30,14 +29,12 @@
     <section id="hero" class="hero-gerenciar">
         <div class="conteudo-gerenciar">
 
-            <!-- TABELA -->
             <div class="table-wrapper">
                 <div class="tabela" id="resListar"></div>
             </div>
 
             <div class="bottom-column">
 
-                <!-- ATUALIZAR PRODUTO -->
                 <div class="gerenciar-box" id="cadProduto" required>
                     <h1>Atualizar Produto</h1>
                     <form>
@@ -54,12 +51,11 @@
                     </form>
                 </div>
 
-                <!-- EXCLUIR PRODUTO -->
                 <div class="gerenciar-box delete-box">
-                    <h1>Apagar Produto</h1>
+                    <h1>Desativar Produto</h1>
                     <form id="formDelete">
                         <input type="number" id="codDelete" placeholder="Código do produto">
-                        <button type="submit" id="btnDelete">Excluir</button>
+                        <button type="submit" id="btnDelete">Desativar</button>
                         <p class="alerta-delete">Esta ação é irreversível ⚠️</p>
                     </form>
                 </div>
@@ -82,7 +78,7 @@
         </div>
     </section>
     <footer class="footer">
-        <p>© 2025 Garage Classics. Todos os direitos reservados.</p>
+        <p>© 2025 Classic Parts Brasil. Todos os direitos reservados.</p>
         <p>Política de Privacidade | Termos de Uso | Contato</p>
     </footer>
 

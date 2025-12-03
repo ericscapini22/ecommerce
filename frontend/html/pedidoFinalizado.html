@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Finalizado</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pedidoFinalizado.css">
+    <script src="../js/pedidoFinaliado.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">
+            <img src="../assets/logo_cpb.png" class="logo-img" alt="Logo" onclick="window.location = '../index.html'">
+        </h1>
+        <nav class="nav">
+            <a href="./infoUsuario.html">
+                <span id="nomeUsuario" class="nome-usuario">Usuário</span>
+            </a>
+            <a href="#" id="btnLogout">Sair</a>
+        </nav>
+    </header>
+
+    <section class="hero-finalizado">
+        <div class="card-finalizado">
+            <div class="icon-sucesso">✔</div>
+            <h2>Compra realizada com sucesso!</h2>
+            <p>Obrigado por comprar com a Classic Parts Brasil!</p>
+
+            <div class="info-pedido">
+                <p><strong>Nº do Pedido:</strong> <span id="numPedido"></span></p>
+                <p><strong>Data:</strong> <span id="dataPedido"></span></p>
+                <p><strong>Total pago:</strong> <span id="totalPago"></span></p>
+            </div>
+
+            <div class="botoes-acoes">
+                <button id="btnVoltarLoja" class="outline">Voltar à Loja</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Classic Parts Brasil. Todos os direitos reservados.</p>
+        <p>Política de Privacidade | Termos de Uso | Contato</p>
+    </footer>
+</body>
+</html>

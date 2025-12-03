@@ -23,8 +23,6 @@ btnLogin.addEventListener('click', (e) => {
             return body;
         }))
         .then(dados => {
-            alert(dados.message)
-
             console.log(dados)
             console.log('nome', dados.usuario.nome)
             console.log('tipo', dados.usuario.tipo)
@@ -49,7 +47,7 @@ btnLogin.addEventListener('click', (e) => {
                 } else {
                     location.href = './html/loja.html'
                 }
-            }, 1500)
+            }, 1000)
         })
         .catch((err) => {
             console.error('Falha ao fazer login!', err)

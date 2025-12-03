@@ -1,11 +1,11 @@
 :root {
-    --bg-login: url('../assets/bg1.png');
+    --bg-login: url('../assets/bg3.png');
     --red: #d40000;
     --font-title: 'Poppins', sans-serif;
     --font-body: 'Roboto Condensed', sans-serif;
 }
 
-.hero-login {
+.hero-endereco {
     height: 100vh;
     background-image: linear-gradient(to right,
         rgba(0,0,0,0.8),
@@ -19,7 +19,7 @@
     padding-top: 150px;
 }
 
-.login-box {
+.endereco-box {
     background: rgba(0, 0, 0, 0.75);
     padding: 55px 48px;
     border-radius: 15px;
@@ -28,13 +28,13 @@
     box-shadow: 0 0 35px rgba(0,0,0,0.6);
 }
 
-.login-box h2 {
+.endereco-box h2 {
     font-family: var(--font-title);
     margin-bottom: 20px;
     font-size: 26px;
 }
 
-.login-box input {
+.endereco-box input {
     width: 100%;
     padding: 15px;
     margin-top: 16px;
@@ -45,7 +45,7 @@
     font-size: 16px;
 }
 
-.login-box button {
+.endereco-box button {
     width: 100%;
     margin-top: 25px;
     padding: 15px;
@@ -59,24 +59,6 @@
     transition: 0.3s;
 }
 
-.login-box button:hover {
+.endereco-box button:hover {
     background-color: rgb(110, 9, 9);
-}
-
-.login-box p {
-    margin-top: 12px;
-    font-size: 15px;
-    font-family: var(--font-title);
-    font-weight: bold;
-}
-
-.login-box p a {
-    text-decoration: none;
-    font-size: 15px;
-    color: rgb(55,55,255);
-    transition: 0.3s;
-}
-
-.login-box p a:hover {
-    color: var(--red);
 }

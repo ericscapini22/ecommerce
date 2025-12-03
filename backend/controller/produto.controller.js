@@ -25,7 +25,7 @@ async function listar(req, res) {
     }
 }
 
-// Atualizar parcialmente produto (PATCH /produto/)
+// Atualiza parcialmente (ou se desejar, completamente) o produto (PATCH /produto/)
 async function atualizar(req, res) {
     try {
         const { id } = req.params
@@ -44,7 +44,6 @@ async function atualizar(req, res) {
 
 }
 
-// DELETE - apagar
 async function apagar(req, res) {
     try {
         const { id } = req.params

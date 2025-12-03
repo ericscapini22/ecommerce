@@ -4,7 +4,6 @@ async function criarProduto(dados) {
 
     const { nome, descricao, modelo, preco, imagem_url, ativo } = dados
 
-    // Validações simples antes de salvar
     if (!nome || !modelo || !preco) {
         throw new Error('Nome, modelo e preço são obrigatórios!')
     }
@@ -24,7 +23,9 @@ async function criarProduto(dados) {
 
 const listarProdutos = async () => {
     try {
-        const produtos = await Produto.findAll();
+        const produtos = await Produto.findAll({
+            where: { ativo: 1 } // só produtos ativos
+        });
 
         return produtos;
     } catch (error) {
@@ -35,7 +36,6 @@ const listarProdutos = async () => {
 
 async function atualizarProduto(id, dados) {
 
-    // Buscar o produto no banco
     const produto = await Produto.findByPk(id)
 
     if (!produto) {
@@ -57,7 +57,8 @@ async function apagarProduto(id) {
         throw new Error('Produto não encontrado!')
     }
 
-    await produto.destroy()
+    // Desativa o produto (MAS não apaga!)
+    await produto.update({ ativo: 0 })
 
     return true
 }

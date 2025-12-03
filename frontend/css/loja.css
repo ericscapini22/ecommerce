@@ -3,24 +3,22 @@
     --font-title: 'Poppins', sans-serif;
     --font-body: 'Roboto Condensed', sans-serif;
 }
-/* ------------------   HERO DA LOJA  ------------------ */
+
 .hero-loja {
     min-height: 100vh;
-    padding: 180px 40px 80px; /* espaço necessário por causa do header fixo */
+    padding: 180px 40px 80px; 
     background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), var(--bg-image3);
     background-size: cover;
     background-repeat: repeat-y;
     background-position: center;
 }
 
-/* Remove o flex que estava travando o grid */
 .coluna-vertical {
     width: 100%;
     margin: 0 auto;
     display: block;
 }
 
-/* ------------------   GRID DE PRODUTOS   ------------------ */
 #listaProdutos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
@@ -31,7 +29,6 @@
     margin: 0 auto 120px;
 }
 
-/* ------------------   CARD DO PRODUTO   ------------------ */
 .produto {
     border-radius: 14px;
     padding: 15px;
@@ -55,7 +52,6 @@
     margin-bottom: 12px;
 }
 
-/* Texto dos cards */
 .produto h3 {
     font-size: 1.2rem;
     color: white;
@@ -68,7 +64,6 @@
     margin-bottom: 6px;
 }
 
-/* Preço destaque */
 .produto .preco {
     font-size: 1.3rem;
     font-weight: bold;
@@ -87,7 +82,6 @@
     font-size: 16px;
 }
 
-/* ------------------   BOTÕES   ------------------ */
 .produto button {
     width: 87%;
     margin-top: 25px;
@@ -107,7 +101,6 @@
     background-color: rgb(110, 9, 9);
 }
 
-/* ------------------   MODAL DE IMAGEM (ZOOM)   ------------------ */
 .image-modal-overlay {
     position: fixed;
     top: 0;
@@ -141,7 +134,6 @@
     to { transform: scale(1); opacity: 1; }
 }
 
-/* ------------------   RESPONSIVIDADE EXTRA   ------------------ */
 @media (max-width: 500px) {
     .hero-loja {
         padding: 160px 20px 60px;

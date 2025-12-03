@@ -43,7 +43,7 @@ const ItemPedido = db.define('itemPedido',{
         unique: true,
         fields: ['idPedido', 'idProduto']
     }],
-    timestamps: false, // Geralmente desativado em tabelas N:N puras 
+    timestamps: false,
     tableName: 'itens_pedidos'
 })
 

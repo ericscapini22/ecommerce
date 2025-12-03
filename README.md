@@ -49,7 +49,11 @@ Acesse a pasta do servidor e instale as dependências:
 ```bash
 - cd backend
 - npm install
+```
 
+### Crie o arquivo .env na raiz da pasta backend
+
+```bash
 - DB_NAME=db_ecom
 - DB_USER=root
 - DB_PASS=sua_senha_aqui
@@ -63,3 +67,16 @@ Acesse a pasta do servidor e instale as dependências:
 - BCRYPT_SALT_ROUNDS=10
 
 - NODE_ENV=development
+```
+
+### Sincronizar tabelas com o banco de dados:
+
+```bash
+- node sync.js
+```
+
+### Iniciar o servidor:
+
+```bash
+- node index.js
+```
